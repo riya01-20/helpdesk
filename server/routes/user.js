@@ -71,23 +71,5 @@ router.post('/auth', async(req, res) => {
         return res.json({error: "Not authenticated"});
     }
 })
-//route to get the user id from the database
-router.post('/get_user_by_id', async(req,res) => {
-    const id = req.body.id;
-    let user = {};
-    user = await UserSchema.findOne({_id: id});
-    if(user){
-        return res.json({
-            message: user,
-            tag: true
-        })
-    }
-
-    return res.json({
-        message: user,
-        tag: false
-    });
-})
-
 
 module.exports = router;
